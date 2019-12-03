@@ -1,0 +1,26 @@
+.page-enter-active,.page-leave-active{transition:opacity .5s}
+.page-enter,.page-leave-active{opacity:0}
+.bounce-enter-active{animation:bounce-in .8s}
+.bounce-leave-active{animation:bounce-out .5s}
+@keyframes bounce-in{
+0%{transform:scale(0)}
+50%{transform:scale(1.5)}
+100%{transform:scale(1)}
+}
+@keyframes bounce-out{
+0%{transform:scale(1)}
+50%{transform:scale(1.5)}
+100%{transform:scale(0)}
+}
+.slide-left-leave-active,.slide-right-leave-active{transition:all ease-in .5s}
+.slide-left-enter,.slide-right-leave-active{opacity:1;transform:translate(30px,0)}
+.slide-left-leave-active,.slide-right-enter{opacity:0;transform:translate(-30px,0)}
+.offsetY-enter-active,.offsetY-leave-active{transition:all ease .3s}
+.offsetY-enter,.offsetY-leave-to{opacity:0;transform:translateY(-250px)}
+.offsetY-enter-to,.offsetY-leave{transform:translateY(0);opacity:1}
+.offsetX-enter-active,.offsetX-leave-active{transition:all ease .3s}
+.offsetX-enter,.offsetX-leave-to{opacity:0;transform:translateX(-250px)}
+.offsetX-enter-to,.offsetX-leave{transform:translateX(0);opacity:1}
+.op-enter-active,.op-leave-active{transition:all ease .4s}
+.op-enter,.op-leave-to{opacity:0}
+.op-enter-to,.op-leave{opacity:1}

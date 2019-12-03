@@ -1,0 +1,20 @@
+{
+    "tabData": [
+      {
+        "name": "优惠券",
+        "path": ""
+      },
+      {
+        "name": "礼品券",
+        "path": "gift"
+      },
+      {
+        "name": "实物卡",
+        "path": "physical"
+      },
+      {
+        "name": "兑换码",
+        "path": "exchange"
+      }
+    ]
+  }

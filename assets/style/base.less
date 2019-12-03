@@ -1,0 +1,101 @@
+@baseFontColor: #248888; //基本字体颜色
+@senColor: #868686; //次要的颜色
+.f-b {
+  color: @baseFontColor;
+}
+
+.b-c {
+  background-color: @baseFontColor;
+}
+
+.f-s {
+  color: @senColor;
+}
+
+.p-r {
+  position: relative;
+}
+
+.f-l {
+  float: left;
+}
+
+.f-r {
+  float: right;
+}
+
+.t-c {
+  text-align: center;
+}
+
+.clearfix:after {
+  content: '\0020';
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1
+}
+
+.Oline {
+  /*1行内省略号  */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  box-orient: vertical;
+  line-clamp: 1;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.n-ellipsis(@n) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: @n;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
+.m::before {
+  content: "¥";
+  padding: 0px;
+  margin: 0px;
+  font-size: 80%;
+  /*加金钱前缀*/
+}
+
+.unit::after {
+  content: "元";
+  padding: 0px;
+  margin: 0px;
+  font-size: 30%;
+}
+
+.input-placeholder(@color: #a2a4a8) {
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
+
+  &:-moz-placeholder {
+    color: @color;
+  }
+
+  &::-moz-placeholder {
+    color: @color;
+  }
+
+  &:-ms-input-placeholder {
+    color: @color;
+  }
+
+  &::-ms-input-placeholder {
+    color: @color;
+  }
+
+  &::placeholder {
+    color: @color;
+  }
+}

@@ -1,0 +1,886 @@
+{
+    "jobs": [
+        {
+            "orgId": "zhihu",
+            "id": "b909aa86-ac81-4b2e-889e-8509c74f60f2",
+            "title": "搜索后端开发实习生",
+            "status": "open",
+            "createdAt": "2019-08-09T03:35:01.000Z",
+            "updatedAt": "2019-11-28T15:45:59.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": "2019-09-05T03:16:02.000Z",
+            "openedAt": "2019-10-23T02:03:18.000Z",
+            "publishedAt": "2019-08-09T03:35:14.000Z",
+            "category2Id": null,
+            "prior": 1,
+            "hireMode": 2,
+            "mjCode": "MJ000896",
+            "attributeId": 603,
+            "deptId": 56126,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56126,
+                "name": "社区业务平台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "3cd18d89-a46e-4941-a6ff-c26bb5c1d14a",
+            "title": "算法实习生（成都）",
+            "status": "open",
+            "createdAt": "2019-11-05T03:06:23.000Z",
+            "updatedAt": "2019-11-27T08:27:03.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-11-04T16:00:00.000Z",
+            "publishedAt": "2019-11-05T03:06:23.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000994",
+            "attributeId": 2757,
+            "deptId": 56120,
+            "locations": [
+                {
+                    "id": 30499,
+                    "country": "中国",
+                    "cityId": 510100,
+                    "address": "成都市天府新区天府大道南段888号广都智库3楼301"
+                }
+            ],
+            "location": {
+                "id": 30499,
+                "country": "中国",
+                "cityId": 510100,
+                "address": "成都市天府新区天府大道南段888号广都智库3楼301"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56120,
+                "name": "技术中台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "c3291fb9-36d2-47ce-ad28-ae5ab57a12bd",
+            "title": "测试开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2018-07-17T08:34:57.000Z",
+            "updatedAt": "2019-11-26T03:01:12.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": "2019-09-05T03:16:02.000Z",
+            "openedAt": "2019-09-09T08:46:24.000Z",
+            "publishedAt": "2019-10-22T09:25:16.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000492",
+            "attributeId": null,
+            "deptId": 56120,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": {
+                "id": 2911,
+                "type": 0,
+                "deactivated": 0,
+                "name": "友情推荐",
+                "startDate": null,
+                "endDate": null,
+                "content": {
+                    "way": 2,
+                    "setting": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": null,
+                        "CORRECTED": null
+                    },
+                    "rewardStageWay": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": 1,
+                        "CORRECTED": null
+                    }
+                },
+                "description": "友情推荐，无悬赏",
+                "hireMode": 2,
+                "createdAt": "2019-01-25T03:44:00.000Z",
+                "updatedAt": "2019-01-25T03:44:00.000Z"
+            },
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56120,
+                "name": "技术中台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false,
+            "recommendJobRankRulesReward": null
+        },
+        {
+            "orgId": "zhihu",
+            "id": "10236512-166f-41b9-a145-b733f99e01d9",
+            "title": "后端开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2018-07-26T06:35:36.000Z",
+            "updatedAt": "2019-11-21T22:29:19.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": "2019-09-05T03:16:02.000Z",
+            "openedAt": "2019-09-09T08:37:39.000Z",
+            "publishedAt": "2019-09-11T08:52:56.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000533",
+            "attributeId": null,
+            "deptId": 56126,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": {
+                "id": 2911,
+                "type": 0,
+                "deactivated": 0,
+                "name": "友情推荐",
+                "startDate": null,
+                "endDate": null,
+                "content": {
+                    "way": 2,
+                    "setting": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": null,
+                        "CORRECTED": null
+                    },
+                    "rewardStageWay": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": 1,
+                        "CORRECTED": null
+                    }
+                },
+                "description": "友情推荐，无悬赏",
+                "hireMode": 2,
+                "createdAt": "2019-01-25T03:44:00.000Z",
+                "updatedAt": "2019-01-25T03:44:00.000Z"
+            },
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56126,
+                "name": "社区业务平台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false,
+            "recommendJobRankRulesReward": null
+        },
+        {
+            "orgId": "zhihu",
+            "id": "bc7be3a6-6ffb-48c5-b400-99d9bfaa285d",
+            "title": "iOS 开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2018-07-26T06:46:20.000Z",
+            "updatedAt": "2019-11-21T05:19:56.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": "2019-09-05T03:16:02.000Z",
+            "openedAt": "2019-09-09T08:37:39.000Z",
+            "publishedAt": "2019-09-11T08:52:36.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000537",
+            "attributeId": null,
+            "deptId": 56126,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": {
+                "id": 2911,
+                "type": 0,
+                "deactivated": 0,
+                "name": "友情推荐",
+                "startDate": null,
+                "endDate": null,
+                "content": {
+                    "way": 2,
+                    "setting": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": null,
+                        "CORRECTED": null
+                    },
+                    "rewardStageWay": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": 1,
+                        "CORRECTED": null
+                    }
+                },
+                "description": "友情推荐，无悬赏",
+                "hireMode": 2,
+                "createdAt": "2019-01-25T03:44:00.000Z",
+                "updatedAt": "2019-01-25T03:44:00.000Z"
+            },
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56126,
+                "name": "社区业务平台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false,
+            "recommendJobRankRulesReward": null
+        },
+        {
+            "orgId": "zhihu",
+            "id": "d598ff98-e6c0-4e3f-a8c6-d1036dfc3685",
+            "title": "Android 开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2018-07-26T06:41:03.000Z",
+            "updatedAt": "2019-11-27T09:17:25.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": "2019-09-05T03:16:02.000Z",
+            "openedAt": "2019-09-09T08:37:39.000Z",
+            "publishedAt": "2019-09-11T08:52:22.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000535",
+            "attributeId": null,
+            "deptId": 56126,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": {
+                "id": 2911,
+                "type": 0,
+                "deactivated": 0,
+                "name": "友情推荐",
+                "startDate": null,
+                "endDate": null,
+                "content": {
+                    "way": 2,
+                    "setting": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": null,
+                        "CORRECTED": null
+                    },
+                    "rewardStageWay": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": 1,
+                        "CORRECTED": null
+                    }
+                },
+                "description": "友情推荐，无悬赏",
+                "hireMode": 2,
+                "createdAt": "2019-01-25T03:44:00.000Z",
+                "updatedAt": "2019-01-25T03:44:00.000Z"
+            },
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56126,
+                "name": "社区业务平台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false,
+            "recommendJobRankRulesReward": null
+        },
+        {
+            "orgId": "zhihu",
+            "id": "f8c501af-cf2f-4bce-8db3-81318b2959df",
+            "title": "前端开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2018-07-26T06:39:08.000Z",
+            "updatedAt": "2019-11-12T00:16:09.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": "2019-09-05T03:16:02.000Z",
+            "openedAt": "2019-09-09T08:37:39.000Z",
+            "publishedAt": "2019-09-11T08:52:05.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000534",
+            "attributeId": null,
+            "deptId": 56126,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": {
+                "id": 2911,
+                "type": 0,
+                "deactivated": 0,
+                "name": "友情推荐",
+                "startDate": null,
+                "endDate": null,
+                "content": {
+                    "way": 2,
+                    "setting": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": null,
+                        "CORRECTED": null
+                    },
+                    "rewardStageWay": {
+                        "100": null,
+                        "101": null,
+                        "200": null,
+                        "201": null,
+                        "HIRED": 1,
+                        "CORRECTED": null
+                    }
+                },
+                "description": "友情推荐，无悬赏",
+                "hireMode": 2,
+                "createdAt": "2019-01-25T03:44:00.000Z",
+                "updatedAt": "2019-01-25T03:44:00.000Z"
+            },
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56126,
+                "name": "社区业务平台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false,
+            "recommendJobRankRulesReward": null
+        },
+        {
+            "orgId": "zhihu",
+            "id": "f5f60429-b5e0-4f96-9dc6-ec1ee645ba65",
+            "title": "WEB前端开发工程师（实习）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:54:40.000Z",
+            "updatedAt": "2019-11-21T06:10:06.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:54:41.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000936",
+            "attributeId": null,
+            "deptId": 56120,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 56120,
+                "name": "技术中台"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "6248cf13-33e2-426a-b7d8-143ff2e2efd2",
+            "title": "数据挖掘工程师（校招）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:41:05.000Z",
+            "updatedAt": "2019-11-15T07:37:03.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:41:05.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000935",
+            "attributeId": null,
+            "deptId": 100560,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 100560,
+                "name": "业务研发中心"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "33667f55-883a-4a5c-a0c2-2d684d9a7908",
+            "title": "Android 开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:35:43.000Z",
+            "updatedAt": "2019-09-09T08:35:43.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:35:44.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000934",
+            "attributeId": null,
+            "deptId": 100560,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 100560,
+                "name": "业务研发中心"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "d7bd09ed-d584-4c2d-9a2b-67651939904a",
+            "title": "后端开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:28:53.000Z",
+            "updatedAt": "2019-09-09T08:28:53.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:28:54.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000933",
+            "attributeId": null,
+            "deptId": 100560,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 100560,
+                "name": "业务研发中心"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "64fb482b-be21-4306-9d01-b0b8da553b18",
+            "title": "前端开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:28:04.000Z",
+            "updatedAt": "2019-09-09T08:28:04.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:28:04.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000932",
+            "attributeId": null,
+            "deptId": 100560,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 100560,
+                "name": "业务研发中心"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "485c81c9-7d49-443b-9fb7-cb817f5d27fd",
+            "title": "IOS 开发工程师（校招）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:26:55.000Z",
+            "updatedAt": "2019-09-09T08:26:55.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:26:55.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000931",
+            "attributeId": null,
+            "deptId": 100560,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 100560,
+                "name": "业务研发中心"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "134154b1-95eb-41d9-aa95-7804c0b070f6",
+            "title": "广告引擎工程师（校招）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:24:30.000Z",
+            "updatedAt": "2019-09-09T08:24:30.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:24:31.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000930",
+            "attributeId": null,
+            "deptId": 100560,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 100560,
+                "name": "业务研发中心"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        },
+        {
+            "orgId": "zhihu",
+            "id": "83ed4843-3732-46b3-a11a-6645c42f7541",
+            "title": "广告算法工程师（校招）",
+            "status": "open",
+            "createdAt": "2019-09-09T08:23:30.000Z",
+            "updatedAt": "2019-09-09T08:27:10.000Z",
+            "pointTo": null,
+            "sourceId": null,
+            "closedAt": null,
+            "openedAt": "2019-09-08T16:00:00.000Z",
+            "publishedAt": "2019-09-09T08:23:30.000Z",
+            "category2Id": null,
+            "prior": null,
+            "hireMode": 2,
+            "mjCode": "MJ000929",
+            "attributeId": null,
+            "deptId": 100560,
+            "locations": [
+                {
+                    "id": 8553,
+                    "country": "中国",
+                    "cityId": 110108,
+                    "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+                }
+            ],
+            "location": {
+                "id": 8553,
+                "country": "中国",
+                "cityId": 110108,
+                "address": "学院路甲 5 号 768 创意园 A 座 15 号门 1002 室"
+            },
+            "recommendRewardBaseRule": null,
+            "recommendRewardAttachRule": null,
+            "customFields": {},
+            "campusSites": [],
+            "department": {
+                "id": 100560,
+                "name": "业务研发中心"
+            },
+            "zhineng": {
+                "id": 6499,
+                "name": "技术类"
+            },
+            "realDeptId": false,
+            "showIsCampus": false,
+            "showCampusSites": false
+        }
+    ],
+    "jobStats": {
+        "orgId": "zhihu",
+        "total": 21
+    },
+    "jobsGroupedByLocation": null,
+    "jobsGroupedByZhineng": null,
+    "jobsGroupedByCampusSite": null
+}
