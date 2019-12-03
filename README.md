@@ -19,8 +19,9 @@ $ npm run start
 $ npm run generate
 ```
 
+``` node  serve 
 # serve with node
-$ npm run node 
+$ npm run node
 ```
 
 
