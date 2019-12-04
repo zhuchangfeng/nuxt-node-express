@@ -4,14 +4,14 @@ import QS from 'qs';
 function jsonProp(obj) {
     // type check
     if (!obj || (typeof obj !== 'object')) {
-        return obj
+        return obj;
     }
     Object.keys(obj).forEach((key) => {
         if ((typeof obj[key]) === 'object') {
             obj[key] = JSON.stringify(obj[key])
         }
     })
-    return obj
+    return obj;
 }
 
 function createObj(obj) {
@@ -36,7 +36,7 @@ export const getJson = (obj) => request({
 export const getStatic = (obj) => request({
     method: "GET",
     ...createObj(obj)
-})
+});
 export const getStudent = () => request({
     method: "GET",
     url: "/api/student"
@@ -54,4 +54,4 @@ export const getJob = (obj) => request({
     url: "/api/job",
     method: "POST",
     ...createObj(obj)
-})
+});
