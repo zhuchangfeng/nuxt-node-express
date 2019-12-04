@@ -84,6 +84,7 @@
 <script>
 import QRCode from "~/components/QRCode.vue";
 import Select from "~/components/Select.vue";
+import { getJob } from "~/api/api";
 export default {
   validate({ query }) {
     // 必须是number类型
@@ -121,6 +122,16 @@ export default {
         this.isCopy = false;
       }
     }
+  },
+  mounted() {
+    console.log(this.$route.query.zhineng);
+    getJob({
+      data: {
+        id: this.$route.query.zhineng
+      }
+    }).then(r=>{
+      console.log(r);
+    });
   }
 };
 </script>

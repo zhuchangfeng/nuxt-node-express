@@ -4,6 +4,9 @@ const fs = require("fs");
 const path = require("path");
 const verbose = process.env.NODE_ENV == 'development';
 const app = express();
+/**
+ *  object  create  API
+ */
 app.map = function(a, route) {
     route = route || '';
     for (var key in a) {
@@ -18,8 +21,15 @@ app.map = function(a, route) {
         }
     }
 };
+/**
+ * users API
+ * --------/users
+ *   ------/:uid
+ *     ----/pets  
+ *       --/:pid
+ */
 app.map({
-    '/api/users': {
+    '/users': {
         get: function(req, res) {
             res.status(200).send('user list');
         },
@@ -43,16 +53,22 @@ app.map({
         }
     }
 });
+/**
+ * router All Entrance
+ */
 router.all('*', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By", ' 3.2.1')
+    res.header("X-Powered-By", ' 3.2.1');
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
 
-router.get("/api/student", function(req, res) {
+/**
+ * student API
+ */
+router.get("/student", function(req, res) {
     let newS = {
         id: +new Date(),
         creat: new Date().toLocaleString(),
@@ -68,8 +84,10 @@ router.get("/api/student", function(req, res) {
         res.status(200).send(data)
     })
 });
-
-router.get("/api/orderList", function(req, res) {
+/**
+ * orderList API
+ */
+router.get("/orderList", function(req, res) {
     let newS = {
         time: +new Date(),
         id: parseInt(Math.random() * 100),
@@ -85,24 +103,70 @@ router.get("/api/orderList", function(req, res) {
         res.status(200).send(data)
     })
 });
-
-router.get("/api/job/:id", function(req, res, next) {
-    const id = req.params.id;
-    if (!/^[0-9]*$/.test(id)) {
-        let info = {
-            err_no: 501,
-            errmsg: ":id is not type number?"
+/**
+ * job API
+ */
+const job = {
+    "/job": {
+        post: function(req, res, next) {
+            let id;
+            if (Object.keys(req.body).indexOf("undefined") != -1) {
+                if (req.query) {
+                    id = req.query.id;
+                }
+            } else {
+                id = req.body.id;
+            }
+            if (!/^[0-9]*$/.test(id)) {
+                let info = {
+                    err_no: 501,
+                    errmsg: "id is not type number?"
+                }
+                res.status(501).send(info);
+            } else {
+                fs.readFile(path.resolve(__dirname, './json/job.json'), "utf-8", function(err, data) {
+                    if (err) {
+                        let info = {
+                            err_no: 5501,
+                            errmsg: JSON.stringify(err)
+                        }
+                        res.status(500).send(info);
+                    } else {
+                        let info = {
+                            success_code: 200,
+                            success_msg: "Successful get job!",
+                            data: JSON.parse(data)
+                        }
+                        res.status(200).send(info);
+                    }
+                })
+            }
         }
-        res.status(501).send(info);
-        return;
+    },
+    "/:id": {
+        get: function(req, res, next) {
+            const id = req.params.id;
+            if (!/^[0-9]*$/.test(id)) {
+                let info = {
+                    err_no: 501,
+                    errmsg: ":id is not type number?"
+                }
+                res.status(501).send(info);
+            } else {
+                fs.readFile(path.resolve(__dirname, './json/job.json'), "utf-8", function(err, data) {
+                    if (err) throw err;
+                    res.status(200).send(data)
+                })
+            }
+        }
     }
-    fs.readFile(path.resolve(__dirname, './json/job.json'), "utf-8", function(err, data) {
-        if (err) throw err;
-        res.status(200).send(data)
-    })
-});
+}
+app.map(job);
 
-router.post("/api/user", function(req, res, next) {
+/**
+ * user API
+ */
+router.post("/user", function(req, res, next) {
     if (Object.keys(req.body).indexOf("undefined") != -1) {
         if (req.query) {
             const name = req.query.name ? req.query.name : false;

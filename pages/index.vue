@@ -16,7 +16,7 @@
 
 <script>
 import Logo from "~/components/Logo.vue";
-import { getStudent, postUser, getUser } from "~/api/api";
+import { getStudent, postUser, getUser, getStatic } from "~/api/api";
 export default {
   components: {
     Logo
@@ -35,6 +35,11 @@ export default {
       console.log(r);
     });
     getUser().then(r=>{
+      console.log(r);
+    });
+    getStatic({
+      url:'/test.json'
+    }).then(r=>{
       console.log(r);
     })
   }
