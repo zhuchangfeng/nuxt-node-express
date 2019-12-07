@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const upload = require("./upload");
 const verbose = process.env.NODE_ENV == 'development';
 const app = express();
 /**
@@ -175,14 +176,14 @@ router.post("/user", function(req, res, next) {
                 res.status(200).send(req.query);
             } else {
                 if (!name) {
-                    var err = {
+                    let err = {
                         err_code: 404,
                         err_msg: 'cannot find age ' + age
                     }
                     res.status(404).send(err)
                 }
                 if (!age) {
-                    var err = {
+                    let err = {
                         err_code: 404,
                         err_msg: 'cannot find age ' + age
                     }
@@ -194,4 +195,71 @@ router.post("/user", function(req, res, next) {
         res.status(200).send(req.body);
     }
 });
+/**
+ * upload API
+ */
+router.post('/upload', function(req, res, next) {
+    upload(req, res, function(err) {
+        // 错误提示
+        if (err) {
+            const errorMessages = {
+                'LIMIT_PART_COUNT': 'Too many parts',
+                'LIMIT_FILE_SIZE': 'File too large',
+                'LIMIT_FILE_COUNT': 'Too many files',
+                'LIMIT_FIELD_KEY': 'Field name too long',
+                'LIMIT_FIELD_VALUE': 'Field value too long',
+                'LIMIT_FIELD_COUNT': 'Too many fields',
+                'LIMIT_UNEXPECTED_FILE': 'Unexpected field'
+            }
+            if (errorMessages.hasOwnProperty(err.code)) {
+                let info = {
+                    "err_code": 50001,
+                    "err_sign": err.code,
+                    "err_msg": errorMessages[err.code],
+                }
+                res.status(500).send(info);
+            }
+        } else {
+            const files = req.files;
+            if (files.length > 0) {
+                if (files.length == 1) {
+                    let info = {
+                        success_code: 200,
+                        success_msg: "upload successful!",
+                        data: {
+                            "path": files[0].fieldname + "/" + files[0].filename,
+                            "size": files[0].size
+                        }
+                    }
+                    res.status(200).send(info);
+                } else if (files.length > 1) {
+                    let path = [];
+                    let size = [];
+                    for (let index = 0; index < files.length; index++) {
+                        path.push(files[index].fieldname + "/" + files[index].filename);
+                        size.push(files[index].size)
+                    }
+                    let info = {
+                        success_code: 200,
+                        success_msg: "upload successful!",
+                        data: {
+                            "path": path,
+                            "size": size
+                        }
+                    }
+                    res.status(200).send(info);
+                }
+            } else if (files.length == 0) {
+                let info = {
+                    "err_code": 50002,
+                    "err_msg": "upload  files type is disable",
+                }
+                res.status(500).send(info);
+            }
+
+        }
+    })
+
+});
+
 module.exports = router;
