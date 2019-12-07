@@ -10,6 +10,10 @@
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
         <nuxt-link to="/user">个人中心</nuxt-link>
       </div>
+      <form action="/api/upload" enctype="multipart/form-data" method="post">
+        <input type="file" name="upload" id="upload" multiple="multiple" value />
+        <input type="submit" name id value="点击上传" />
+      </form>
     </div>
   </div>
 </template>
@@ -34,14 +38,14 @@ export default {
     }).then(r => {
       console.log(r);
     });
-    getUser().then(r=>{
+    getUser().then(r => {
       console.log(r);
     });
     getStatic({
-      url:'/test.json'
-    }).then(r=>{
+      url: "/test.json"
+    }).then(r => {
       console.log(r);
-    })
+    });
   }
 };
 </script>

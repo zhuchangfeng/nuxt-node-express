@@ -39,7 +39,7 @@ node_modules/
 jspm_packages/
 static/
 assets/
-
+upload/
 # TypeScript v1 declaration files
 typings/
 
