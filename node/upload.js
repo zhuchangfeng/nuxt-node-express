@@ -40,5 +40,5 @@ const imageUploader = multer({
     storage: storage,
     fileFilter: imageFilter,
     limits: imageLimit
-}).array('upload', 9); //定义表单字段、数量限制
+}).array('file', 9); //定义表单字段、数量限制
 module.exports = imageUploader;

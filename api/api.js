@@ -55,3 +55,9 @@ export const getJob = (obj) => request({
     method: "POST",
     ...createObj(obj)
 });
+
+export const upload = (obj) => request({
+    url: "/api/upload",
+    method: "PUT",
+    ...createObj(obj)
+})

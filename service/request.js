@@ -1,4 +1,4 @@
-import axios from 'axios';//导入axios模块
+import axios from 'axios'; //导入axios模块
 const config = require('./config');
 //创建axios
 const request = axios.create(config);
@@ -25,13 +25,19 @@ request.interceptors.response.use(
         return Promise.reject(error);
     });
 // 添加请求拦截器
-request.interceptors.request.use(function (config) {
-    // 在发送请求之前将参数转码在ie中会出现参数被编码的情况，这边做统一处理  
-    config.data = decodeURIComponent(config.data);
-    console.log('Making request to ' + config.url)
-    return config;
-},
-    function (error) {
+request.interceptors.request.use(function(config) {
+        // 在发送请求之前将参数转码在ie中会出现参数被编码的情况，这边做统一处理  
+        if (config.method === 'post') {
+            if (config.headers['Content-Type'] !== 'application/json') {
+                config.data = decodeURIComponent(config.data);
+                console.log('Making request to ' + config.url)
+            } else {
+                config.data = config.data;
+            }
+        }
+        return config;
+    },
+    function(error) {
         // 对请求错误做些什么  
         return Promise.reject(error);
     });

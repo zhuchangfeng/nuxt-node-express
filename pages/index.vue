@@ -10,20 +10,29 @@
         <a href="https://github.com/nuxt/nuxt.js" target="_blank" class="button--grey">GitHub</a>
         <nuxt-link to="/user">个人中心</nuxt-link>
       </div>
-      <form action="/api/upload" enctype="multipart/form-data" method="post">
-        <input type="file" name="upload" id="upload" multiple="multiple" value />
-        <input type="submit" name id value="点击上传" />
-      </form>
+      <input type="file" name="file" multiple="multiple" value ref="upload" />
+      <button @click="uploadimg">提交</button>
     </div>
   </div>
 </template>
 
 <script>
 import Logo from "~/components/Logo.vue";
-import { getStudent, postUser, getUser, getStatic } from "~/api/api";
+import { getStudent, postUser, getUser, getStatic, upload } from "~/api/api";
 export default {
   components: {
     Logo
+  },
+  methods: {
+    uploadimg() {
+      const files = this.$refs.upload.files[0];
+      var formData = new FormData();
+      formData.append("file", files);
+      console.log(formData);
+      upload({ data: formData }).then(r => {
+        console.log(r);
+      });
+    }
   },
   mounted() {
     getStudent().then(r => {

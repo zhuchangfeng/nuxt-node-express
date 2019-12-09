@@ -198,7 +198,7 @@ router.post("/user", function(req, res, next) {
 /**
  * upload API
  */
-router.post('/upload', function(req, res, next) {
+router.put('/upload', function(req, res, next) {
     upload(req, res, function(err) {
         // 错误提示
         if (err) {
@@ -221,43 +221,52 @@ router.post('/upload', function(req, res, next) {
             }
         } else {
             const files = req.files;
-            if (files.length > 0) {
-                if (files.length == 1) {
-                    let info = {
-                        success_code: 200,
-                        success_msg: "upload successful!",
-                        data: {
-                            "path": files[0].fieldname + "/" + files[0].filename,
-                            "size": files[0].size
+            if (files) {
+                if (files.length > 0) {
+                    if (files.length == 1) {
+                        let info = {
+                            success_code: 200,
+                            success_msg: "upload successful!",
+                            data: {
+                                "path": files[0].fieldname + "/" + files[0].filename,
+                                "size": files[0].size
+                            }
                         }
-                    }
-                    res.status(200).send(info);
-                } else if (files.length > 1) {
-                    let path = [];
-                    let size = [];
-                    for (let index = 0; index < files.length; index++) {
-                        path.push(files[index].fieldname + "/" + files[index].filename);
-                        size.push(files[index].size)
-                    }
-                    let info = {
-                        success_code: 200,
-                        success_msg: "upload successful!",
-                        data: {
-                            "path": path,
-                            "size": size
+                        res.status(200).send(info);
+                    } else if (files.length > 1) {
+                        let path = [];
+                        let size = [];
+                        for (let index = 0; index < files.length; index++) {
+                            path.push(files[index].fieldname + "/" + files[index].filename);
+                            size.push(files[index].size)
                         }
+                        let info = {
+                            success_code: 200,
+                            success_msg: "upload successful!",
+                            data: {
+                                "path": path,
+                                "size": size
+                            }
+                        }
+                        res.status(200).send(info);
                     }
-                    res.status(200).send(info);
+                } else if (files.length == 0) {
+                    let info = {
+                        "err_code": 50002,
+                        "err_msg": "upload  files type is disable",
+                    }
+                    res.status(500).send(info);
                 }
-            } else if (files.length == 0) {
+
+            } else {
                 let info = {
-                    "err_code": 50002,
-                    "err_msg": "upload  files type is disable",
+                    "err_code": 50003,
+                    "err_msg": "Upload files is empty",
                 }
                 res.status(500).send(info);
             }
-
         }
+
     })
 
 });
