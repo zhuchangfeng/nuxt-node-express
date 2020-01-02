@@ -75,3 +75,13 @@ export default {
   }
 };
 </script>
+<style lang="less">
+  div[id*=qrcode]{
+    &>img{
+      display: none !important;
+    }
+    &>canvas{
+      display: block !important;
+    }
+  }
+</style>

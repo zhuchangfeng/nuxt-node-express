@@ -1,5 +1,6 @@
 @baseFontColor: #248888; //基本字体颜色
 @senColor: #868686; //次要的颜色
+
 .f-b {
   color: @baseFontColor;
 }
@@ -74,6 +75,12 @@
   font-size: 30%;
 }
 
+.border-radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
 .input-placeholder(@color: #a2a4a8) {
   &::-webkit-input-placeholder {
     color: @color;
@@ -97,5 +104,21 @@
 
   &::placeholder {
     color: @color;
+  }
+}
+
+
+.ellipsis(@rowCount: 1) when(@rowCount <=1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  & when(@rowCount>1) {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $rowCount;
+    -webkit-box-orient: vertical;
   }
 }
