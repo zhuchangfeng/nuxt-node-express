@@ -114,7 +114,6 @@ router.get("/orderList", function(req, res) {
 const job = {
     "/job": {
         post: function(req, res, next) {
-<<<<<<< HEAD
             let obj = {};
             if (Object.keys(req.body).length > 0) {
                 obj.limit = /^[0-9]*$/.test(req.body.limit) ? req.body.limit : 10;
@@ -147,26 +146,6 @@ const job = {
                     }
                 });
                 https.get(url, (r) => {
-=======
-            let limit, zhinengId, orgId, offset, keyword;
-            if (Object.keys(req.body).length > 0) {
-                limit = /^[0-9]*$/.test(req.body.limit) ? req.body.limit : 10;
-                offset = /^[0-9]*$/.test(req.body.offset) ? req.body.offset : 0;
-                zhinengId = req.body.zhinengId ? req.body.zhinengId : '';
-                orgId = req.body.orgId ? req.body.orgId : false;
-                siteId = req.body.siteId ? req.body.siteId : false;
-            } else {
-                if (req.query) {
-                    limit = /^[0-9]*$/.test(req.query.limit) ? req.query.limit : 10;
-                    offset = /^[0-9]*$/.test(req.query.offset) ? req.query.offset : 0;
-                    zhinengId = req.query.zhinengId ? req.query.zhinengId : '';
-                    orgId = req.query.orgId ? req.query.orgId : false;
-                    siteId = req.query.siteId ? req.query.siteId : false;
-                }
-            }
-            if (orgId && siteId) {
-                https.get(`https://app.mokahr.com/api/apply/jobs?limit=${limit}&zhinengId=${zhinengId}&orgId=${orgId}&offset=${offset}&siteId=${siteId}`, (r) => {
->>>>>>> 14b296b415c006d35816eabdb99498f69328bafb
                     let json = "";
                     r.setEncoding("utf-8");
                     r.on('data', (d) => {
@@ -175,19 +154,11 @@ const job = {
                     r.on("end", function() {
                         try {
                             var data = JSON.parse(json);
-<<<<<<< HEAD
                             data.jobStats["limit"] = obj.limit;
                             data.jobStats["offset"] = obj.offset;
                             let info = {
                                 success_code: 200,
                                 success_msg: "Successful post job!",
-=======
-                            data.jobStats["limit"] = limit;
-                            data.jobStats["offset"] = offset;
-                            let info = {
-                                success_code: 200,
-                                success_msg: "Successful get job test !",
->>>>>>> 14b296b415c006d35816eabdb99498f69328bafb
                                 data: data
                             }
                             res.status(200).send(info);
@@ -203,28 +174,19 @@ const job = {
                     console.error(e);
                 });
             } else {
-<<<<<<< HEAD
                 if (!obj.orgId) {
-=======
-                if (!orgId) {
->>>>>>> 14b296b415c006d35816eabdb99498f69328bafb
                     let info = {
                         "err_code": -1,
                         "err_msg": "参数缺失orgId",
                     }
                     res.status(401).send(info);
                 }
-<<<<<<< HEAD
                 if (!obj.siteId) {
-=======
-                if (!siteId) {
->>>>>>> 14b296b415c006d35816eabdb99498f69328bafb
                     let info = {
                         "err_code": -1,
                         "err_msg": "参数缺失siteId",
                     }
                     res.status(401).send(info);
-<<<<<<< HEAD
                 }
             }
         },
@@ -263,8 +225,6 @@ const job = {
                         "err_msg": "id参数缺少",
                     }
                     res.status(401).send(info);
-=======
->>>>>>> 14b296b415c006d35816eabdb99498f69328bafb
                 }
             }
 
@@ -277,10 +237,6 @@ app.map(job);
  * user API
  */
 router.post("/user", function(req, res, next) {
-<<<<<<< HEAD
-=======
-    console.log(res);
->>>>>>> 14b296b415c006d35816eabdb99498f69328bafb
     if (Object.keys(req.body).length > 0) {
         res.status(200).send(req.body);
     } else {
