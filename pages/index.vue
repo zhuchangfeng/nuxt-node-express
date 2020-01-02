@@ -25,9 +25,14 @@ export default {
   },
   methods: {
     uploadimg() {
-      const files = this.$refs.upload.files[0];
-      var formData = new FormData();
-      formData.append("file", files);
+      const files = this.$refs.upload.files;
+      if (files.length > 0) {
+        var formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+          const element = files[i];
+          formData.append("file", element);
+        }
+      }
       console.log(formData);
       upload({ data: formData }).then(r => {
         console.log(r);
@@ -40,12 +45,12 @@ export default {
     });
     postUser({
       method: "POST",
-      params: {
+      data: {
         name: "555",
         age: "666"
       }
     }).then(r => {
-      console.log(r);
+      console.log(r,"555555555");
     });
     getUser().then(r => {
       console.log(r);
@@ -91,3 +96,4 @@ export default {
   padding-top: 15px;
 }
 </style>
+

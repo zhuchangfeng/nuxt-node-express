@@ -5,7 +5,9 @@ const consola = require('consola');
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config();
 const { TESTHOST, TESTPROT } = dotenv.parsed;
+// parse application/json
 app.use(bodyParser.json());
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api", api)
 app.listen(TESTPROT, TESTHOST);

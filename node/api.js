@@ -2,9 +2,12 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const _ = require('lodash');
 const upload = require("./upload");
 const verbose = process.env.NODE_ENV == 'development';
+const createToken = require("./middleware/createToken");
 const app = express();
+const https = require("https");
 /**
  *  object  create  API
  */
@@ -58,11 +61,12 @@ app.map({
  * router All Entrance
  */
 router.all('*', (req, res, next) => {
+    console.log(req.headers, '55555');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By", ' 3.2.1');
-    res.header("Content-Type", "application/json;charset=utf-8");
+    res.header("X-Powered-By", '3.2.1');
+    res.header("Content-Type", 'application/x-www-form-urlencoded;charset=utf-8');
     next();
 });
 
@@ -110,54 +114,118 @@ router.get("/orderList", function(req, res) {
 const job = {
     "/job": {
         post: function(req, res, next) {
-            let id;
-            if (Object.keys(req.body).indexOf("undefined") != -1) {
+            let obj = {};
+            if (Object.keys(req.body).length > 0) {
+                obj.limit = /^[0-9]*$/.test(req.body.limit) ? req.body.limit : 10;
+                obj.offset = /^[0-9]*$/.test(req.body.offset) ? req.body.offset : 0;
+                obj.orgId = req.body.orgId ? req.body.orgId : false;
+                obj.siteId = req.body.siteId ? req.body.siteId : false;
+                req.body.zhinengId ? obj.zhinengId = req.body.zhinengId : delete obj.zhinengId;
+                req.body.keyword ? obj.keyword = req.body.keyword : delete obj.keyword;
+            } else {
                 if (req.query) {
-                    id = req.query.id;
+                    obj.limit = /^[0-9]*$/.test(req.query.limit) ? req.query.limit : 10;
+                    obj.offset = /^[0-9]*$/.test(req.query.offset) ? req.query.offset : 0;
+                    obj.orgId = req.query.orgId ? req.query.orgId : false;
+                    obj.siteId = req.query.siteId ? req.query.siteId : false;
+                    req.query.zhinengId ? obj.zhinengId = req.query.zhinengId : delete obj.zhinengId;
+                    req.query.keyword ? obj.keyword = req.query.keyword : delete obj.keyword;
                 }
-            } else {
-                id = req.body.id;
             }
-            if (!/^[0-9]*$/.test(id)) {
-                let info = {
-                    err_no: 501,
-                    errmsg: "id is not type number?"
-                }
-                res.status(501).send(info);
-            } else {
-                fs.readFile(path.resolve(__dirname, './json/job.json'), "utf-8", function(err, data) {
-                    if (err) {
-                        let info = {
-                            err_no: 5501,
-                            errmsg: JSON.stringify(err)
+            if (obj.orgId && obj.siteId) {
+                let url = "https://app.mokahr.com/api/apply/jobs?";
+                Object.keys(obj).forEach(function(item, index) {
+                    if (obj.hasOwnProperty(item)) {
+                        const element = obj[item];
+                        if ((Object.keys(obj).length - 1) - index > 0) {
+                            url += item + "=" + element + "&";
+                        } else {
+                            url += item + "=" + element;
                         }
-                        res.status(500).send(info);
-                    } else {
-                        let info = {
-                            success_code: 200,
-                            success_msg: "Successful get job!",
-                            data: JSON.parse(data)
-                        }
-                        res.status(200).send(info);
+
                     }
-                })
-            }
-        }
-    },
-    "/:id": {
-        get: function(req, res, next) {
-            const id = req.params.id;
-            if (!/^[0-9]*$/.test(id)) {
-                let info = {
-                    err_no: 501,
-                    errmsg: ":id is not type number?"
-                }
-                res.status(501).send(info);
+                });
+                https.get(url, (r) => {
+                    let json = "";
+                    r.setEncoding("utf-8");
+                    r.on('data', (d) => {
+                        json += d;
+                    });
+                    r.on("end", function() {
+                        try {
+                            var data = JSON.parse(json);
+                            data.jobStats["limit"] = obj.limit;
+                            data.jobStats["offset"] = obj.offset;
+                            let info = {
+                                success_code: 200,
+                                success_msg: "Successful post job!",
+                                data: data
+                            }
+                            res.status(200).send(info);
+                        } catch (error) {
+                            let info = {
+                                err_no: 400,
+                                err_msg: error
+                            }
+                            res.status(400).send(info);
+                        }
+                    })
+                }).on('error', (e) => {
+                    console.error(e);
+                });
             } else {
-                fs.readFile(path.resolve(__dirname, './json/job.json'), "utf-8", function(err, data) {
-                    if (err) throw err;
-                    res.status(200).send(data)
-                })
+                if (!obj.orgId) {
+                    let info = {
+                        "err_code": -1,
+                        "err_msg": "参数缺失orgId",
+                    }
+                    res.status(401).send(info);
+                }
+                if (!obj.siteId) {
+                    let info = {
+                        "err_code": -1,
+                        "err_msg": "参数缺失siteId",
+                    }
+                    res.status(401).send(info);
+                }
+            }
+        },
+        "/detail": {
+            get: function(req, res, next) {
+                const { query } = req;
+                if (query.id) {
+                    const href = `https://app.mokahr.com/api/apply/zhihu/job/${query.id}?site=campus&orgId=zhihu&siteId=3818`
+                    https.get(href, (r) => {
+                        let json = "";
+                        r.setEncoding("utf-8");
+                        r.on('data', (d) => {
+                            json += d;
+                        });
+                        r.on('end', function() {
+                            try {
+                                var data = JSON.parse(json);
+                                let info = {
+                                    success_code: 200,
+                                    success_msg: "Successful get job details!",
+                                    data: data
+                                }
+                                res.status(200).send(info);
+                            } catch (error) {
+                                let info = {
+                                    err_no: 400,
+                                    err_msg: error
+                                }
+                                res.status(400).send(info);
+                            }
+                        })
+                    })
+                } else {
+                    let info = {
+                        "err_code": -1,
+                        "err_msg": "id参数缺少",
+                    }
+                    res.status(401).send(info);
+                }
             }
         }
     }
@@ -168,12 +236,21 @@ app.map(job);
  * user API
  */
 router.post("/user", function(req, res, next) {
-    if (Object.keys(req.body).indexOf("undefined") != -1) {
+    if (Object.keys(req.body).length > 0) {
+        res.status(200).send(req.body);
+    } else {
         if (req.query) {
             const name = req.query.name ? req.query.name : false;
             const age = req.query.age ? req.query.age : false;
             if (name && age) {
-                res.status(200).send(req.query);
+                let info = {
+                    success_code: 200,
+                    success_msg: "Successful get job!",
+                    data: {
+                        token: createToken(req.query)
+                    }
+                }
+                res.status(200).send(info);
             } else {
                 if (!name) {
                     let err = {
@@ -191,8 +268,6 @@ router.post("/user", function(req, res, next) {
                 }
             }
         }
-    } else {
-        res.status(200).send(req.body);
     }
 });
 /**

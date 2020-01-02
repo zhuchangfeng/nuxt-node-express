@@ -37,7 +37,7 @@ export function _debounce(func, wait = 200, immediate = true) {
     let timeout, result;
     // 延迟执行函数
     const later = (context, args) => setTimeout(() => {
-        timeout = null;// 倒计时结束
+        timeout = null; // 倒计时结束
         if (!immediate) {
             // 执行回调
             func.apply(context, args);
@@ -45,20 +45,20 @@ export function _debounce(func, wait = 200, immediate = true) {
         }
     }, wait);
     const debounced = (...params) => {
-        if (!timeout) {
-            timeout = later(this, params);
-            if (immediate) {
-                // 立即执行
-                func.apply(this, params);
+            if (!timeout) {
+                timeout = later(this, params);
+                if (immediate) {
+                    // 立即执行
+                    func.apply(this, params);
+                }
+            } else {
+                clearTimeout(timeout);
+                // 函数在每个等待时延的结束被调用
+                timeout = later(this, params);
             }
-        } else {
-            clearTimeout(timeout);
-            // 函数在每个等待时延的结束被调用
-            timeout = later(this, params);
         }
-    }
-    // 提供在外部清空定时器的方法
-    debounced.cancel = function () {
+        // 提供在外部清空定时器的方法
+    debounced.cancel = function() {
         clearTimeout(timeout);
         timeout = null;
     };
@@ -108,7 +108,7 @@ export function _throttle(func, wait = 200, options = {}) {
         return result;
     };
 
-    throttled.cancel = function () {
+    throttled.cancel = function() {
         clearTimeout(timeout);
         previous = 0;
         timeout = context = args = null;
@@ -167,13 +167,37 @@ function uniq(arr) {
     }
     return result
 }
+/**
+ * 获取url参数
+ * @param {url参数名称} name 
+ */
+function gqs(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) {
+        return unescape(r[2])
+    }
+    return null
+}
 
-const install = function (Vue) { //通过install方法挂载到Vue原型上去
+/**
+ * 获取Cooke
+ * @param {cookie名称} name 
+ */
+function getCookie(name) {
+    var reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)")
+    var r = document.cookie.match(reg)
+    return r ? unescape(r[2]) : null
+}
+
+const install = function(Vue) { //通过install方法挂载到Vue原型上去
     Vue.prototype.isEmpty = isEmpty;
     Vue.prototype.getType = getType;
     Vue.prototype._debounce = _debounce;
     Vue.prototype._throttle = _throttle;
     Vue.prototype._inputSelect = setSelectionRange;
     Vue.prototype._uniq = uniq;
+    Vue.prototype._gqs = gqs;
+    Vue.prototype.getCookie = getCookie;
 }
 export default install

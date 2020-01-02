@@ -52,7 +52,7 @@
         <div class="job-block">
           <ul class="job-ul">
             <a
-              :href="'/zhihu/campus/jobs?zhineng='+item.count"
+              :href="'/zhihu/campus/jobs?zhineng='+item.id"
               v-for="(item,index) in cityData"
               :key="'city'+index"
             >
@@ -255,31 +255,38 @@ export default {
       cityData: [
         {
           name: "技术类",
-          count: 55
+          count: 22,
+          id: 6499
         },
         {
           name: "运营类",
-          count: 66
+          count: 15,
+          id: 6502
         },
         {
           name: "产品类",
-          count: 777
-        },
-        {
-          name: "管理类",
-          count: 8818
-        },
-        {
-          name: "设计类",
-          count: 55
+          count: 6,
+          id: 6500
         },
         {
           name: "市场类",
-          count: 747
+          count: 2,
+          id: 6503
+        },
+        {
+          name: "管理类",
+          count: 2,
+          id: 6506
+        },
+        {
+          name: "设计类",
+          count: 2,
+          id: 6501
         },
         {
           name: "职能类",
-          count: 772
+          count: 2,
+          id: 6504
         }
       ],
       officeImg: [
@@ -497,6 +504,10 @@ export default {
           padding: 5px 17px;
           background-color: #0c8cf6;
           color: rgba(249, 249, 250, 1);
+           transition: ease-in all 0.1s;
+            &:hover {
+              background-color: rgb(61, 163, 248);
+            }
         }
       }
     }

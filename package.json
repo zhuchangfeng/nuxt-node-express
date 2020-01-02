@@ -16,6 +16,7 @@
         "cross-env": "^5.2.0",
         "dotenv": "^8.2.0",
         "express": "^4.16.4",
+        "lodash": "^4.17.15",
         "multer": "^1.4.2",
         "nuxt": "^2.0.0",
         "uuid": "^3.3.3"
@@ -25,6 +26,7 @@
         "eslint": "^6.6.0",
         "eslint-loader": "^3.0.2",
         "font-awesome": "^4.7.0",
+        "jsonwebtoken": "^8.5.1",
         "koa": "^2.11.0",
         "less": "^3.10.3",
         "less-loader": "^5.0.0",

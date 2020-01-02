@@ -1,5 +1,5 @@
-import request from '../service/request'
-import QS from 'qs';
+import request from '../service/request';
+import qs from 'qs';
 
 function jsonProp(obj) {
     // type check
@@ -10,7 +10,7 @@ function jsonProp(obj) {
         if ((typeof obj[key]) === 'object') {
             obj[key] = JSON.stringify(obj[key])
         }
-    })
+    });
     return obj;
 }
 
@@ -21,7 +21,7 @@ function createObj(obj) {
         const back = Object.assign(
             data ? {
                 data: toString.call(data) == "[object Object]" ?
-                    QS.stringify(jsonProp(data)) : jsonProp(data)
+                    qs.stringify(jsonProp(data)) : jsonProp(data)
             } : params ? { params: params } : {}, other);
         return back;
     }
@@ -43,6 +43,7 @@ export const getStudent = () => request({
 });
 export const postUser = (obj) => request({
     url: "/api/user",
+    method: "POST",
     ...createObj(obj)
 })
 
@@ -50,12 +51,16 @@ export const getUser = () => request({
     url: "/api/users"
 });
 
-export const getJob = (obj) => request({
+export const postJob = (obj) => request({
     url: "/api/job",
     method: "POST",
     ...createObj(obj)
 });
-
+export const getJobD = (obj) => request({
+    url: "/api/job/detail",
+    method: "GET",
+    ...createObj(obj)
+});
 export const upload = (obj) => request({
     url: "/api/upload",
     method: "PUT",

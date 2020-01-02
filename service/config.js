@@ -7,7 +7,7 @@ module.exports = {
     // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)  
     timeout: 50000,
     headers: {
-        'Content-Type': 'application/json;application/x-www-form-urlencoded;charset=utf-8',
+        'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
     },
     // 请求头设置  
     withCredentials: true,
