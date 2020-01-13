@@ -1,124 +1,123 @@
 @baseFontColor: #248888; //基本字体颜色
 @senColor: #868686; //次要的颜色
-
 .f-b {
-  color: @baseFontColor;
+    color: @baseFontColor;
 }
 
 .b-c {
-  background-color: @baseFontColor;
+    background-color: @baseFontColor;
 }
 
 .f-s {
-  color: @senColor;
+    color: @senColor;
 }
 
 .p-r {
-  position: relative;
+    position: relative;
 }
 
 .f-l {
-  float: left;
+    float: left;
 }
 
 .f-r {
-  float: right;
+    float: right;
 }
 
 .t-c {
-  text-align: center;
-}
-
-.clearfix:after {
-  content: '\0020';
-  display: block;
-  height: 0;
-  clear: both;
+    text-align: center;
 }
 
 .clearfix {
-  *zoom: 1
+    display: block;
+    zoom: 1;
+    &:after {
+        content: '\0020';
+        display: block;
+        font-size: 0;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
 }
 
 .Oline {
-  /*1行内省略号  */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  box-orient: vertical;
-  line-clamp: 1;
-  overflow: hidden;
-  white-space: normal;
+    /*1行内省略号  */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    box-orient: vertical;
+    line-clamp: 1;
+    overflow: hidden;
+    white-space: normal;
 }
 
 .n-ellipsis(@n) {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: @n;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  word-break: break-all;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: @n;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 .m::before {
-  content: "¥";
-  padding: 0px;
-  margin: 0px;
-  font-size: 80%;
-  /*加金钱前缀*/
+    content: "¥";
+    padding: 0px;
+    margin: 0px;
+    font-size: 80%;
+    /*加金钱前缀*/
 }
 
 .unit::after {
-  content: "元";
-  padding: 0px;
-  margin: 0px;
-  font-size: 30%;
+    content: "元";
+    padding: 0px;
+    margin: 0px;
+    font-size: 30%;
 }
 
 .border-radius(@radius: 5px) {
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  border-radius: @radius;
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
 }
 
 .input-placeholder(@color: #a2a4a8) {
-  &::-webkit-input-placeholder {
-    color: @color;
-  }
-
-  &:-moz-placeholder {
-    color: @color;
-  }
-
-  &::-moz-placeholder {
-    color: @color;
-  }
-
-  &:-ms-input-placeholder {
-    color: @color;
-  }
-
-  &::-ms-input-placeholder {
-    color: @color;
-  }
-
-  &::placeholder {
-    color: @color;
-  }
+    &::-webkit-input-placeholder {
+        color: @color;
+    }
+    &:-moz-placeholder {
+        color: @color;
+    }
+    &::-moz-placeholder {
+        color: @color;
+    }
+    &:-ms-input-placeholder {
+        color: @color;
+    }
+    &::-ms-input-placeholder {
+        color: @color;
+    }
+    &::placeholder {
+        color: @color;
+    }
 }
 
-
 .ellipsis(@rowCount: 1) when(@rowCount <=1) {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    box-orient: vertical;
+    line-clamp: 1;
+    overflow: hidden;
+    white-space: normal;
+}
 
-  & when(@rowCount>1) {
+.ellipsis(@rowCount) when (@rowCount >1) {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: $rowCount;
+    -webkit-line-clamp: @rowCount;
     -webkit-box-orient: vertical;
-  }
 }

@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  layout: "blog",
+  layout: "campus",
   head() {
     return {
       title: "这是一个测试",

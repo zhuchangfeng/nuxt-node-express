@@ -1,9 +1,10 @@
 import axios from 'axios'; //导入axios模块
-const config = require('./config');
+import config from './config';
 //创建axios
 const request = axios.create(config);
 //默认请求带参数
 console.log(process.server);
+const urlPrefix = "/api";
 if (process.server) {
     config.baseURL = `http://${process.env.HOST || '127.0.0.1'}:${process.env.PORT || 3000}`;
     config.withCredentials = true;
@@ -27,6 +28,7 @@ request.interceptors.response.use(
 // 添加请求拦截器
 request.interceptors.request.use(function(config) {
         // 在发送请求之前将参数转码在ie中会出现参数被编码的情况，这边做统一处理  
+        config.url = urlPrefix + config.url;
         if (config.method === 'post') {
             if (config.headers['Content-Type'] !== 'application/json') {
                 config.data = decodeURIComponent(config.data);

@@ -13,7 +13,7 @@
                 <div class="share-box">
                   <div class="share-title">扫码分享职位</div>
                   <div class="share-code">
-                    <QRCode :text="url" width="160" height="180"></QRCode>
+                    <QRCode :text="url" width="180" height="180"></QRCode>
                   </div>
                   <div class="share-title">或使用链接分享</div>
                   <div class="share-copy">
@@ -47,9 +47,9 @@
           </div>
           <div class="jobs-post">
             <div class="jobs-HDK55" v-for="(item,index) in jobs" :key="index">
-              <a href="javascript:void(0)" class="link-11ZhH">
+              <a :href="'/zhihu/campus/jobs/'+item.id" class="link-11ZhH">
                 <div class="title-1X3Vf">
-                  {{ item.title}}
+                  {{item.title}}
                   <span class="prior-31MtI" v-if="item.prior"></span>
                 </div>
                 <div class="status-3wqaa">
@@ -64,7 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="jobs-r" id="right">
+        <div class="jobs-r">
           <div class="jobs-new">
             <div class="new-title">
               <span class="title-text">最新职位</span>
@@ -197,13 +197,14 @@ export default {
                 box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
                 width: 180px;
                 padding: 10px;
+                box-sizing: content-box;
                 left: -118px;
                 line-height: initial;
                 display: none;
                 .share-title {
                   font-size: 12px;
                   color: #9a9fac;
-                  padding: 15px 0;
+                  margin: 15px 0;
                 }
                 .share-code {
                   width: 100%;
@@ -214,6 +215,7 @@ export default {
                   height: 30px;
                   line-height: 30px;
                   position: relative;
+                  box-sizing: border-box;
                   .copy-input {
                     height: 100%;
                     margin-right: 60px;

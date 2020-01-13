@@ -1,8 +1,7 @@
-const http = require('http')
-const https = require('https')
-const config = require('../nuxt.config.js');
-module.exports = {
-    baseURL: process.browser ? '/' : (process.env._AXIOS_BASE_URL_ || `http://${config.server.host}:${config.server.port}`),
+import http from 'http';
+import https from 'https';
+export default {
+    baseURL: process.browser ? '/' : (process.env._AXIOS_BASE_URL_ || `http://${process.env.HOST || '127.0.0.1'}:${process.env.PORT || 3000}`),
     // `baseURL` 将自动加在 `url` 前面  
     // `timeout` 指定请求超时的毫秒数(0 表示无超时时间)  
     timeout: 50000,

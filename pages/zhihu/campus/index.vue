@@ -3,7 +3,6 @@
     <div class="campus_apply-index a" id="0005551">
       <div class="apply-banner"></div>
     </div>
-
     <!--  About Us  -->
     <div class="campus_apply-about model-2csMz a" id="0005552">
       <div class="campus_apply-module">
@@ -355,7 +354,7 @@ export default {
           },
           {
             threshold: [0],
-            root: document.getElementsByClassName("zhihu-pd")[0]
+            root: document.getElementsByClassName("campus_apply")[0]
           }
         );
         for (const iterator of document.getElementsByClassName("a")) {
@@ -504,10 +503,10 @@ export default {
           padding: 5px 17px;
           background-color: #0c8cf6;
           color: rgba(249, 249, 250, 1);
-           transition: ease-in all 0.1s;
-            &:hover {
-              background-color: rgb(61, 163, 248);
-            }
+          transition: ease-in all 0.1s;
+          &:hover {
+            background-color: rgb(61, 163, 248);
+          }
         }
       }
     }

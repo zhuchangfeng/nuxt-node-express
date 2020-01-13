@@ -10,6 +10,7 @@ const getters = {
 
 const mutations = {
     CHANGE_INFO(state, value) {
+        console.log(value);
         state.routeInfo = value;
     }
 }

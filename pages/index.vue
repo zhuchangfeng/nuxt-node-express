@@ -55,11 +55,6 @@ export default {
     getUser().then(r => {
       console.log(r);
     });
-    getStatic({
-      url: "/test.json"
-    }).then(r => {
-      console.log(r);
-    });
   }
 };
 </script>

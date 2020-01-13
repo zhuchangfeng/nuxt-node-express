@@ -9,26 +9,54 @@
                 <div class="job_info_sCGWE">
                   <div class="job_info_time">
                     <span class="f-l">发布时间：2019-10-31</span>
-                    <span class="f-r">
+                    <span class="f-r" @mouseleave="leave">
                       分享到
                       <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                      <div class="share-box">
+                        <div class="share-title">扫码分享职位</div>
+                        <div class="share-code">
+                          <QRCode :text="url" width="160" height="180"></QRCode>
+                        </div>
+                        <div class="share-title">或使用链接分享</div>
+                        <div class="share-copy">
+                          <div class="copy-input">
+                            <input type="text" name="copy" disabled :value="url" ref="copy-input" />
+                          </div>
+                          <div :class="['copy-button',isCopy?'copy':'']" @click="copyUrl"></div>
+                        </div>
+                      </div>
                     </span>
                   </div>
-                  <div class="job_info_title">合同管理实习生</div>
+                  <div class="clearfix"></div>
+                  <div
+                    class="job_info_title"
+                  >{{job.title}}</div>
                   <div class="job_info_tag">
-                    <span class="job_tag_item">会员事业部</span>
-                    <span class="job_tag_item">管理类</span>
+                    <span class="job_tag_item">{{job.department.name}}</span>
+                    <span class="job_tag_item">{{job.commitment}}</span>
+                    <span class="job_tag_item">{{job.zhineng.name}}</span>
                   </div>
                   <div class="job_info_location">
                     <span>北京市·海淀区</span>
-                    <span class="job_info_apply">申请职位</span>
+                    <span class="job_info_apply button_3iuEw">申请职位</span>
                   </div>
+                </div>
+
+                <div class="list_k05pg">
+                  <div class="title_241qv">
+                    <span>职位描述</span>
+                  </div>
+                  <div v-html="job.jobDescription"></div>
+                </div>
+
+                <div class="footer_2pCJe">
+                  <span class="footer_2pCJe_apply button_3iuEw">申请职位</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="jobs-r" id="right">
+        <div class="jobs-r">
           <div class="jobs-new">
             <div class="new-title">
               <span class="title-text">最新职位</span>
@@ -48,7 +76,49 @@
 </template>
 
 <script>
-export default {};
+import QRCode from "~/components/QRCode.vue";
+import { getJobD } from "~/api/api";
+export default {
+  validate({ params }) {
+    // 必须是number类型
+    return /[\S]+/.test(params.id);
+  },
+  components: {
+    QRCode
+  },
+  data() {
+    return {
+      isCopy: false,
+      url: "https://cn.vuejs.org/v2/api/#Vue-nextTick"
+    };
+  },
+  async asyncData({ params }) {
+    const { data } = await getJobD({
+      params: { id: params.id }
+    });
+    return { job: data.data };
+  },
+  methods: {
+    copyUrl() {
+      // 复制文字
+      const that = this;
+      if (!that.isCopy) {
+        that.$nextTick(() => {
+          that._inputSelect(that.$refs["copy-input"].value, function(state) {
+            if (state) {
+              that.isCopy = true;
+            }
+          });
+        });
+      }
+    },
+    leave() {
+      if (this.isCopy) {
+        this.isCopy = false;
+      }
+    }
+  }
+};
 </script>
 
 <style  lang="less" scoped>
@@ -70,7 +140,6 @@ export default {};
         width: 75%;
         padding-right: 0.5rem;
         .container_2YVRu {
-          min-height: 600px;
           background-color: #fff;
           font-size: 14px;
           .job_details_3a_UI {
@@ -83,11 +152,92 @@ export default {};
               .job_info_sCGWE {
                 position: relative;
                 padding-bottom: 16px;
-                margin-bottom: 16px;
                 .job_info_time {
                   color: #89909e;
                   font-size: 12px;
-                  overflow: hidden;
+                  .f-r {
+                    cursor: pointer;
+                    position: relative;
+                    &:hover {
+                      .share-box {
+                        display: block;
+                        cursor: auto;
+                      }
+                    }
+                    .share-box {
+                      position: absolute;
+                      background-color: #fff;
+                      z-index: 1;
+                      box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
+                      width: 180px;
+                      padding: 10px;
+                      left: -118px;
+                      line-height: initial;
+                      display: none;
+                      .share-title {
+                        font-size: 12px;
+                        color: #9a9fac;
+                        padding: 15px 0;
+                      }
+                      .share-code {
+                        width: 100%;
+                        height: 180px;
+                        background-color: #ccc;
+                      }
+                      .share-copy {
+                        height: 30px;
+                        line-height: 30px;
+                        position: relative;
+                        .copy-input {
+                          height: 100%;
+                          margin-right: 60px;
+                          border: 1px solid #000;
+                          border-right: 0;
+                          padding: 5px;
+                          input {
+                            width: 100%;
+                            height: 100%;
+                            border: 0;
+                            vertical-align: top;
+                            outline: none;
+                            &:disabled {
+                              background-color: #fff;
+                            }
+                          }
+                        }
+                        .copy-button {
+                          background-color: #000;
+                          color: #fff;
+                          text-align: center;
+                          width: 60px;
+                          position: absolute;
+                          top: 0;
+                          z-index: 1;
+                          right: 0;
+                          cursor: pointer;
+                          transition: ease-in all 0.1s;
+                          &:after {
+                            content: "复制链接";
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                          }
+                          &.copy::after {
+                            transition: ease-in all 0.5s;
+                            content: "已复制";
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            color: #fff;
+                            background-color: #797979;
+                          }
+                          &:hover {
+                            background-color: rgb(78, 86, 90);
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
                 .job_info_title {
                   display: inline-block;
@@ -97,6 +247,7 @@ export default {};
                   line-height: 28px;
                   color: #222831;
                   margin-right: 120px;
+                  .ellipsis(1);
                 }
                 .job_info_tag {
                   margin-top: 15px;
@@ -117,18 +268,67 @@ export default {};
                     line-height: 33px;
                     padding: 0 23px;
                     font-size: 12px;
-                    color: #fff;
-                    cursor: pointer;
-                    text-align: center;
-                    .border-radius(2px);
-                    background-color: rgb(34, 40, 49);
                     float: right;
-                    transition: background-color 0.3s;
-                    &:hover {
-                      background-color: rgb(78, 86, 90);
-                    }
                   }
                 }
+              }
+              .list_k05pg {
+                word-break: break-word;
+                font-size: 14px;
+                padding-top: 5px;
+                .title_241qv {
+                  margin-bottom: 19px;
+                  color: #222831;
+                  font-size: 16px;
+                  position: relative;
+                  height: 24px;
+                  line-height: 24px;
+                  span {
+                    display: inline-block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    z-index: 1;
+                    padding-right: 12px;
+                    background-color: #fff;
+                  }
+                  &::after {
+                    content: "";
+                    display: block;
+                    height: 1px;
+                    background-color: #f4f4f5;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    z-index: 0;
+                  }
+                }
+              }
+              .footer_2pCJe {
+                margin-top: 20px;
+                margin-bottom: 27px;
+                text-align: center;
+                .footer_2pCJe_apply {
+                  line-height: 36px;
+                  padding: 0 30px;
+                  font-size: 14px;
+                  text-align: center;
+                }
+              }
+            }
+            .button_3iuEw {
+              text-align: center;
+              color: #fff;
+              cursor: pointer;
+              .border-radius(2px);
+              display: inline-block;
+              background-color: rgb(34, 40, 49);
+              transition: background-color 0.3s;
+              &:hover {
+                background-color: rgb(78, 86, 90);
               }
             }
           }

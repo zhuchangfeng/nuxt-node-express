@@ -61,7 +61,6 @@ app.map({
  * router All Entrance
  */
 router.all('*', (req, res, next) => {
-    console.log(req.headers, '55555');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
@@ -190,10 +189,11 @@ const job = {
                 }
             }
         },
-        "/detail": {
+        "/detail/:id*?": {
             get: function(req, res, next) {
                 const { query } = req;
-                if (query.id) {
+                const { params } = req
+                if (query.id || params.id) {
                     const href = `https://app.mokahr.com/api/apply/zhihu/job/${query.id}?site=campus&orgId=zhihu&siteId=3818`
                     https.get(href, (r) => {
                         let json = "";
@@ -346,5 +346,6 @@ router.put('/upload', function(req, res, next) {
     })
 
 });
+
 
 module.exports = router;
