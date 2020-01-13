@@ -39,30 +39,30 @@ export const getStatic = (obj) => request({
 });
 export const getStudent = () => request({
     method: "GET",
-    url: "/api/student"
+    url: "/student"
 });
 export const postUser = (obj) => request({
-    url: "/api/user",
+    url: "/user",
     method: "POST",
     ...createObj(obj)
 })
 
 export const getUser = () => request({
-    url: "/api/users"
+    url: "/users"
 });
 
 export const postJob = (obj) => request({
-    url: "/api/job",
+    url: "/job",
     method: "POST",
     ...createObj(obj)
 });
 export const getJobD = (obj) => request({
-    url: "/api/job/detail",
+    url: "/job/detail",
     method: "GET",
     ...createObj(obj)
 });
 export const upload = (obj) => request({
-    url: "/api/upload",
+    url: "/upload",
     method: "PUT",
     ...createObj(obj)
 })
