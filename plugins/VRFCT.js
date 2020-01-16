@@ -124,7 +124,7 @@ export function _throttle(func, wait = 200, options = {}) {
  */
 function setSelectionRange(text = "", callback) {
     let textArea = document.createElement('textarea');
-    text = text + "\n ————————————————\n版权声明：不要用于商业。\n原文链接：" + location.href;
+    // text = text + "\n ————————————————\n版权声明：不要用于商业。\n原文链接：" + location.href;
     textArea.style.position = 'fixed';
     textArea.style.zIndex = -1;
     textArea.style.top = '0';
@@ -151,7 +151,7 @@ function setSelectionRange(text = "", callback) {
 }
 /**
  * 数组去重
- * @param {目标数组:Array}} arr 
+ * @param {目标数组:Array} arr 
  */
 function uniq(arr) {
     let result = []

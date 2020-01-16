@@ -45,7 +45,8 @@
               </div>
             </div>
           </div>
-          <div class="jobs-post">
+
+          <div class="jobs-post" v-loading="isLoading">
             <div class="jobs-HDK55" v-for="(item,index) in jobs" :key="index">
               <a :href="'/zhihu/campus/jobs/'+item.id" class="link-11ZhH">
                 <div class="title-1X3Vf">
@@ -62,6 +63,7 @@
                 >发布时间：{{new Date(item.createdAt).toLocaleDateString().replace(/\//g,"-")}}</div>
               </a>
             </div>
+            <div class="jobs-info" v-show="isNull">暂时找不到职位</div>
           </div>
         </div>
         <div class="jobs-r">
@@ -86,7 +88,7 @@
 <script>
 import QRCode from "~/components/QRCode.vue";
 import Select from "~/components/Select.vue";
-import { postJob, postUser,getJobD } from "~/api/api";
+import { postJob, postUser, getJobD } from "~/api/api";
 export default {
   validate({ query }) {
     // 必须是number类型
@@ -99,18 +101,11 @@ export default {
   data() {
     return {
       isCopy: false,
-      url: "https://cn.vuejs.org/v2/api/#Vue-nextTick"
+      url: "https://cn.vuejs.org/v2/api/#Vue-nextTick",
+      isLoading: true,
+      jobs: [],
+      isNull: false
     };
-  },
-  async asyncData({ query }) {
-    const { data } = await postJob({
-      data: {
-        zhinengId: query.zhineng,
-        orgId: "zhihu",
-        siteId: 3818
-      }
-    });
-    return { jobs: data.data.jobs };
   },
   methods: {
     selectValue(value) {
@@ -133,15 +128,32 @@ export default {
       if (this.isCopy) {
         this.isCopy = false;
       }
+    },
+    getUrl() {
+      this.url = window.location.href;
     }
   },
   mounted() {
-    getJobD({
-      params:{
-        id:'58befa9c-aa68-4c37-86d3-574f199c088f'
+    this.getUrl();
+    const { query } = this.$route;
+    postJob({
+      data: {
+        zhinengId: query.zhineng,
+        orgId: "zhihu",
+        siteId: 3818
       }
-    })
-  },
+    }).then(r => {
+      const { data } = r;
+      this.isLoading = false;
+      if (data.success_code == 200) {
+        if (data.data.jobs.length == 0) {
+          this.isNull = true;
+        } else {
+          this.jobs = data.data.jobs;
+        }
+      }
+    });
+  }
 };
 </script>
 
@@ -380,21 +392,37 @@ export default {
               }
             }
           }
+          .jobs-info {
+            text-align: center;
+            width: 100%;
+            line-height: 220px;
+            color: #a2a4a8;
+          }
+          .jobs-loading {
+            text-align: center;
+            font-size: 12px;
+            padding: 10px 0;
+            color: #a2a4a8;
+          }
         }
       }
       .jobs-r {
         float: right;
-        width: 25%;
-        max-width: 25%;
+        width: 300px;
+        max-width: 300px;
         padding-left: 0.5rem;
+        box-sizing: border-box;
+        overflow: hidden;
         .jobs-new {
           background-color: #fff;
+          padding: 0 20px;
+          box-sizing: border-box;
           .new-title {
             height: 56px;
             font-size: 16px;
             color: #222831;
             line-height: 56px;
-            padding: 0 20px;
+            box-sizing: border-box;
             .title-text {
               float: left;
             }
@@ -406,11 +434,11 @@ export default {
             }
           }
           .new-box {
-            padding-left: 20px;
             min-height: 120px;
+            background-color: #fff;
             .job-JS545S {
               position: relative;
-              padding: 16px 62px 16px 0px;
+              padding: 16px 0px 16px 0px;
               line-height: 20px;
               font-size: 14px;
               border-bottom: 0.5px dashed #eee;
@@ -421,13 +449,12 @@ export default {
                 border-bottom: 0;
               }
               .prior-31MtI {
-                position: absolute;
-                top: 16px;
-                right: 19px;
+                display: block;
                 width: 16px;
                 height: 18px;
                 background-image: url("https://static.mokahr.com/images/apply_web/prior-icon.svg");
                 background-size: 100%;
+                float: right;
               }
             }
           }

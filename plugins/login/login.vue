@@ -4,7 +4,7 @@
       <div class="login-title">
         <span>手机号登录</span>
       </div>
-      <span class="login-colse" @click="hide">×</span>
+      <i class="fa fa-times login-colse" aria-hidden="true" @click="hide"></i>
       <div class="login-phone">
         <div class="phone-label">
           <span>+86</span>
@@ -90,7 +90,7 @@ export default {
           "https://app.mokahr.com/campus_apply/zhihu/3818#/?_k=" + +new Date();
       }
     },
-    test(){
+    test() {
       console.log("object");
     },
     changeCode() {
@@ -132,17 +132,16 @@ export default {
     box-sizing: border-box;
     .login-colse {
       position: absolute;
-      top: -40px;
+      top: -42px;
       left: 0;
       color: #fff;
-      width: 20px;
-      height: 20px;
-      border: 1px solid #fff;
+      width: 24px;
+      height: 24px;
+      border: 2px solid #fff;
       border-radius: 50%;
       line-height: 20px;
       text-align: center;
-      font-size: 14px;
-      font-family: cursive;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       &::after {
@@ -150,7 +149,7 @@ export default {
         position: absolute;
         top: 20px;
         left: 10px;
-        width: 1px;
+        width: 2px;
         height: 20px;
         background-color: #fff;
       }
@@ -293,6 +292,11 @@ export default {
       border-radius: 2px;
       text-align: center;
       background-color: #0c8cf6;
+      transition: ease-in all 0.2s;
+      &:hover {
+        background-color: #35b5ff;
+        color: #ffffff;
+      }
     }
   }
 }

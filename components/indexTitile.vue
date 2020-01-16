@@ -73,7 +73,7 @@ export default {
   left: 0;
   width: 100%;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
-  z-index: 1001;
+  z-index: 9998;
   .zhihu-nav-container {
     width: 1200px;
     height: 100%;

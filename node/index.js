@@ -17,7 +17,7 @@ consola.ready({
 });
 console.log(
     [
-        "Powered by AMP ⚡ HTML – Version]",
+        'Powered by AMP ⚡ HTML – Version]',
         '###### ######  ##    ######  #####  ##### ',
         '##     ##      ##      ##      ##    ## ',
         '##     ##      ##      ##       ##  ## ',

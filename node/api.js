@@ -110,7 +110,7 @@ router.get("/orderList", function(req, res) {
 /**
  * job API
  */
-app.map({
+const job = {
     "/job": {
         post: function(req, res, next) {
             let obj = {};
@@ -230,7 +230,8 @@ app.map({
 
         },
     }
-});
+}
+app.map(job);
 
 /**
  * user API

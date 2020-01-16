@@ -25,7 +25,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name:"CampusTitle",
+  name: "CampusTitle",
   data() {
     return {
       linkData: [
@@ -66,7 +66,7 @@ export default {
     login() {
       this.$showLogin();
     }
-  }
+  },
 };
 </script>
 <style lang="less" scoped>
@@ -77,7 +77,7 @@ export default {
   left: 0;
   width: 100%;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
-  z-index: 1001;
+  z-index: 9998;
   .campus-nav-container {
     width: 1200px;
     height: 100%;
@@ -89,7 +89,7 @@ export default {
       vertical-align: top;
     }
     .campus-nav-logo {
-     margin-top: 30px;
+      margin-top: 30px;
       height: 60px;
       float: left;
       .campus-logo-bg {

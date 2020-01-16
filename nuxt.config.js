@@ -32,7 +32,8 @@ module.exports = {
      ** Plugins to load before mounting the App
      */
     plugins: [
-        { src: '~/plugins/common', ssr: true }
+        { src: '~/plugins/common', ssr: true },
+        { src: '~/plugins/index', ssr: false }
     ],
     /*
      ** Nuxt.js dev-modules

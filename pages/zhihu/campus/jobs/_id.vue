@@ -46,7 +46,7 @@
                   <div class="title_241qv">
                     <span>职位描述</span>
                   </div>
-                  <div v-html="job.jobDescription"></div>
+                  <div v-html="job.jobDescription" style="line-height: 1.8"></div>
                 </div>
 
                 <div class="footer_2pCJe">

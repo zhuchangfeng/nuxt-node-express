@@ -1,9 +1,9 @@
 <template>
   <div class="Select" @click="inputFocus">
-    <input type="text" :name="name" ref="input" @focus="showItem=true" />
+    <input type="text" :name="name" ref="input" @focus="showItem=true" @blur="inputBlur" />
     <span class="Select-placeholder" v-show="!selectValue">{{placeholder}}</span>
     <span class="Select-value">{{selectValue}}</span>
-    <span class="Select-arrow" title="Select-arrow">
+    <span  :class="['Select-arrow ',showItem?'active':'']"  title="Select-arrow">
       <i class="fa fa-chevron-down" aria-hidden="true"></i>
     </span>
     <span
@@ -71,9 +71,12 @@ export default {
   },
   methods: {
     inputFocus() {
-      this.$nextTick(() => {
-        this.$refs.input.focus();
-      });
+      this.$refs.input.focus();
+    },
+    inputBlur() {
+      this.timer = setTimeout(() => {
+        this.showItem = false;
+      }, 180);
     },
     clearValue() {
       //清除数据
@@ -87,10 +90,9 @@ export default {
       const data = this.value[index];
       if (this.getType(data) == "object") {
         data.index = index;
-        this.$emit("click", data);
         this.selectValue = data[this.keys];
+        this.$emit("click", data);
       }
-      this.showItem = !this.showItem;
     }
   },
   watch: {
@@ -100,6 +102,11 @@ export default {
       } else {
         this.$emit("visible-change", news);
       }
+    }
+  },
+  destroyed() {
+    if (this.timer) {
+      clearTimeout(this.timer);
     }
   }
 };
@@ -117,46 +124,69 @@ export default {
   font-size: 12px;
   cursor: pointer;
   position: relative;
+  user-select: none;
   &:hover {
     border-color: #0c8cf6;
   }
   input {
+    appearance: none;
     margin: 0;
-    padding: 0;
     background-color: transparent;
     border: 0 none;
     box-shadow: 0 none;
+    display: block;
     outline: none;
     cursor: default;
-    width: 5px;
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    left: 0;
+    padding: 0 12px;
+    z-index: 1;
   }
   .Select-placeholder {
     color: #a2a4a8;
     margin-left: -9px;
+    padding: 0 12px;
+    position: absolute;
+    top: 0;
+    z-index: 0;
   }
 
   .Select-value {
     margin-left: -9px;
+    position: absolute;
+    top: 0;
+    left: 20px;
   }
   .Select-clear {
-    float: right;
     margin-right: 5px;
     color: #a2a4a8;
+    height: 100%;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    z-index: 1;
     &:hover {
       color: #0c8cf6;
     }
   }
   .Select-arrow {
-    float: right;
     cursor: default;
-    transform: scale(0.6);
+    transform: rotate(0deg) scale(0.6);
     color: #a2a4a8;
+    position: absolute;
+    top: 0;
+    right: 12px;
+    transition: all .5s cubic-bezier(.645,.045,.355,1);
+    &.active {
+      transform: rotate(180deg) scale(0.6);
+    }
   }
   .Select-box {
     position: absolute;
     width: 100%;
     left: -1px;
-    margin-top: 5px;
     background-color: #fff;
     border: 1px solid #f1f1f1f1;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
@@ -164,6 +194,7 @@ export default {
     overflow: auto;
     border-radius: 2px;
     z-index: 1;
+    top: 40px;
     .Select-item {
       padding-left: 10px;
       color: #a2a4a8;
