@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const api = require("./api");
+const yidoutang = require("./yidotang/api")
 const consola = require('consola');
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config();
@@ -9,7 +10,7 @@ const { TESTHOST, TESTPROT } = dotenv.parsed;
 app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/api", api)
+app.use("/api", api, yidoutang);
 app.listen(TESTPROT, TESTHOST);
 consola.ready({
     message: `Server listening on http://${TESTHOST}:${TESTPROT}`,

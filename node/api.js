@@ -13,7 +13,7 @@ const https = require("https");
  */
 app.map = function(a, route) {
     route = route || '';
-    for (var key in a) {
+    for (let key in a) {
         switch (typeof a[key]) {
             case 'object':
                 app.map(a[key], route + key);
@@ -152,7 +152,7 @@ const job = {
                     });
                     r.on("end", function() {
                         try {
-                            var data = JSON.parse(json);
+                            let data = JSON.parse(json);
                             data.jobStats["limit"] = obj.limit;
                             data.jobStats["offset"] = obj.offset;
                             let info = {
@@ -192,7 +192,7 @@ const job = {
         "/detail/:id*?": {
             get: function(req, res, next) {
                 const { query } = req;
-                const { params } = req
+                const { params } = req;
                 if (query.id || params.id) {
                     const href = `https://app.mokahr.com/api/apply/zhihu/job/${query.id}?site=campus&orgId=zhihu&siteId=3818`
                     https.get(href, (r) => {
@@ -203,7 +203,7 @@ const job = {
                         });
                         r.on('end', function() {
                             try {
-                                var data = JSON.parse(json);
+                                let data = JSON.parse(json);
                                 let info = {
                                     success_code: 200,
                                     success_msg: "Successful get job details!",
@@ -346,6 +346,9 @@ router.put('/upload', function(req, res, next) {
     })
 
 });
+
+
+
 
 
 module.exports = router;
