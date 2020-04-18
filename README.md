@@ -18,7 +18,7 @@ $ npm run start
 # generate static project
 $ npm run generate
 
-# run  yidoutang api
+# run yidoutang api
 $ npm run node
 ```
 
