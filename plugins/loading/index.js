@@ -8,8 +8,7 @@ const merge = ($data, option) => {
 }
 export default (Vue) => {
     const loadingConstructor = Vue.extend(loadingBox);
-    let initComponent = new loadingConstructor();
-    initComponent.$mount();
+    let initComponent = new loadingConstructor().$mount();
     Vue.directive("loading", {
         // bind声明周期, 只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
         bind(el, binding, vnode, oldVnode) {
