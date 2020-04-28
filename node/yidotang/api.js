@@ -29,18 +29,13 @@ app.map({
     "/info": {
         get: function(req, res, next) {
             const { query } = req;
-            const { params } = req;
             let obj = {
                 scheme: "https",
                 APPOS_VERSION: "v3.9.1",
                 page: 1
             };
-            if (typeof query.page != "undefined") {
-                obj.page = /^[0-9]*$/.test(query.page) && query.page > 0 ? query.page : 1;
-            } else {
-                if (typeof params.page != "undefined") {
-                    obj.page = /^[0-9]*$/.test(params.page) && params.page > 0 ? params.page : 1;
-                }
+            if (/^[0-9]*$/.test(query.page)) {
+                obj.page = query.page > 0 ? query.page : 1;
             };
             const options = {
                 hostname: "m.yidoutang.com",
@@ -364,18 +359,13 @@ app.map({
         "/list": {
             get: function(req, res, next) {
                 const { query } = req;
-                const { params } = req;
                 let obj = {
                     scheme: "https",
                     APPOS_VERSION: "v3.9.1",
                     page: 1
                 }
-                if (typeof query.page != "undefined") {
-                    obj.page = /^[0-9]*$/.test(query.page) && query.page > 0 ? query.page : 1;
-                } else {
-                    if (typeof params.page != "undefined") {
-                        obj.page = /^[0-9]*$/.test(params.page) && params.page > 0 ? params.page : 1;
-                    }
+                if (/^[0-9]*$/.test(query.page)) {
+                    obj.page = query.page > 0 ? query.page : 1;
                 };
                 const options = {
                     hostname: "m.yidoutang.com",
@@ -497,18 +487,13 @@ app.map({
         "/list": {
             get: function(req, res, next) {
                 const { query } = req;
-                const { params } = req;
                 let obj = {
                     scheme: "https",
                     APPOS_VERSION: "v3.9.1",
                     page: 1
                 };
-                if (typeof query.page != "undefined") {
-                    obj.page = /^[0-9]*$/.test(query.page) && query.page > 0 ? query.page : 1;
-                } else {
-                    if (typeof params.page != "undefined") {
-                        obj.page = /^[0-9]*$/.test(params.page) && params.page > 0 ? params.page : 1;
-                    }
+                if (/^[0-9]*$/.test(query.page)) {
+                    obj.page = query.page > 0 ? query.page : 1;
                 };
                 const options = {
                     hostname: "m.yidoutang.com",
@@ -549,6 +534,129 @@ app.map({
             }
         }
     },
+});
+
+// 图册
+app.map({
+    // 图册标签
+    "/photo": {
+        "/activitetags": {
+            get: function(req, res, next) {
+                const { query } = req;
+                let obj = {
+                    scheme: "https",
+                    APPOS_VERSION: "v3.9.1",
+                    space: "", //空间
+                    style: "", //风格
+                    part: "", //硬装
+                    soft: "", //软装
+                    order: "0", //排序
+                    sharing: "0", //有购物单
+                };
+                obj.space = query.space !== "0" ? query.space : "";
+                obj.style = query.style !== "0" ? query.style : "";
+                obj.part = query.part !== "0" ? query.part : "";
+                obj.soft = query.soft !== "0" ? query.soft : "";
+                obj.order = /^[0-9]*$/.test(query.order) ? query.order == "0" || query.order == "1" ? query.order : "0" : "0";
+                obj.sharing = /^[0-9]*$/.test(query.sharing) ? query.sharing == "0" || query.sharing == "1" ? query.sharing : "0" : "0";
+                const options = {
+                    hostname: "m.yidoutang.com",
+                    port: 443,
+                    path: "/apiv3/photo/activitetags?" + qs.stringify(obj),
+                    method: "GET",
+                };
+                const hreq = https.request(options, (hres) => {
+                    let json = "";
+                    hres.setEncoding("utf-8");
+                    hres.on('data', (d) => {
+                        json += d;
+                    });
+                    hres.on("end", function() {
+                        try {
+                            let data = JSON.parse(json);
+                            let info = {
+                                success_code: 200,
+                                success_msg: "Successful get photo activitetags!",
+                                ...data
+                            };
+                            res.type("json").status(200).send(info);
+                        } catch (error) {
+                            let info = {
+                                err_code: 400,
+                                err_msg: error
+                            };
+                            res.type("json").status(400).send(info);
+                            next(error);
+                        }
+                    });
+                });
+                hreq.on('error', (e) => {
+                    console.error(e);
+                });
+                hreq.end();
+            }
+        }
+    },
+    "/album": {
+        get: function(req, res, next) {
+            const { query } = req;
+            let obj = {
+                scheme: "https",
+                APPOS_VERSION: "v3.9.1",
+                space: "", //空间
+                style: "", //风格
+                part: "", //硬装
+                soft: "", //软装
+                order: "0", //排序
+                sharing: "0", //有购物单
+                page: 1, //页面
+            };
+            if (/^[0-9]*$/.test(query.page)) {
+                obj.page = query.page > 0 ? query.page : 1;
+            };
+            obj.space = query.space !== "0" ? query.space : "";
+            obj.style = query.style !== "0" ? query.style : "";
+            obj.part = query.part !== "0" ? query.part : "";
+            obj.soft = query.soft !== "0" ? query.soft : "";
+            obj.order = /^[0-9]*$/.test(query.order) ? query.order == "0" || query.order == "1" ? query.order : "0" : "0";
+            obj.sharing = /^[0-9]*$/.test(query.sharing) ? query.sharing == "0" || query.sharing == "1" ? query.sharing : "0" : "0";
+            const options = {
+                hostname: "m.yidoutang.com",
+                port: 443,
+                path: "/apiv3/case/album?" + qs.stringify(obj),
+                method: "GET",
+            };
+            const hreq = https.request(options, (hres) => {
+                let json = "";
+                hres.setEncoding("utf-8");
+                hres.on('data', (d) => {
+                    json += d;
+                });
+                hres.on("end", function() {
+                    try {
+                        let data = JSON.parse(json);
+                        let info = {
+                            success_code: 200,
+                            success_msg: "Successful get album list!",
+                            ...data
+                        };
+                        res.type("json").status(200).send(info);
+                    } catch (error) {
+                        let info = {
+                            err_code: 400,
+                            err_msg: error
+                        };
+                        res.type("json").status(400).send(info);
+                        next(error);
+                    }
+                });
+            });
+            hreq.on('error', (e) => {
+                console.error(e);
+            });
+            hreq.end();
+        }
+    }
 })
 
 
