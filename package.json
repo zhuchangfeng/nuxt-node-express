@@ -9,7 +9,7 @@
         "build": "nuxt build",
         "start": "cross-env NODE_ENV=production node server/index.js",
         "generate": "nuxt generate",
-        "node": "cross-env NODE_ENV=development nodemon  node/index.js --watch node"
+        "node": "cross-env NODE_ENV=development nodemon --exec  babel-node node/index.js  "
     },
     "dependencies": {
         "axios": "^0.19.1",
@@ -21,6 +21,11 @@
         "qs": "^6.9.1"
     },
     "devDependencies": {
+        "@babel/cli": "^7.8.4",
+        "@babel/core": "^7.9.6",
+        "@babel/node": "^7.8.7",
+        "@babel/plugin-transform-runtime": "^7.9.6",
+        "@babel/preset-env": "^7.9.6",
         "@nuxtjs/eslint-module": "^1.1.0",
         "@nuxtjs/style-resources": "^1.0.0",
         "dotenv": "^8.2.0",

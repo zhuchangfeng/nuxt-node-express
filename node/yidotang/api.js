@@ -435,10 +435,10 @@ app.map({
                     order: "0", //排序
                     sharing: "0", //有购物单
                 };
-                obj.space = query.space !== "0" ?? "";
-                obj.style = query.style !== "0" ?? "";
-                obj.part = query.part !== "0" ?? "";
-                obj.soft = query.soft !== "0" ?? "";
+                obj.space = query.space !== "0" ? query.space : "";
+                obj.style = query.style !== "0" ? query.style : "";
+                obj.part = query.part !== "0" ? query.part : "";
+                obj.soft = query.soft !== "0" ? query.soft : "";
                 obj.order = /^[0-9]*$/.test(query.order) ? query.order == "0" || query.order == "1" ? query.order : "0" : "0";
                 obj.sharing = /^[0-9]*$/.test(query.sharing) ? query.sharing == "0" || query.sharing == "1" ? query.sharing : "0" : "0";
                 const options = {
@@ -531,10 +531,10 @@ app.map({
             if (/^[0-9]*$/.test(query.page)) {
                 obj.page = query.page > 0 ? query.page : 1;
             };
-            obj.space = query.space !== "0" ?? "";
-            obj.style = query.style !== "0" ?? "";
-            obj.part = query.part !== "0" ?? "";
-            obj.soft = query.soft !== "0" ?? "";
+            obj.space = query.space !== "0" ? query.space : "";
+            obj.style = query.style !== "0" ? query.style : "";
+            obj.part = query.part !== "0" ? query.part : "";
+            obj.soft = query.soft !== "0" ? query.soft : "";
             obj.order = /^[0-9]*$/.test(query.order) ? query.order == "0" || query.order == "1" ? query.order : "0" : "0";
             obj.sharing = /^[0-9]*$/.test(query.sharing) ? query.sharing == "0" || query.sharing == "1" ? query.sharing : "0" : "0";
             const options = {
