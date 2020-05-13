@@ -274,7 +274,8 @@ router.post("/user", function(req, res, next) {
 /**
  * upload API
  */
-router.put('/upload', function(req, res, next) {
+router.post('/upload', function(req, res, next) {
+    console.log("object");
     upload(req, res, function(err) {
         // 错误提示
         if (err) {

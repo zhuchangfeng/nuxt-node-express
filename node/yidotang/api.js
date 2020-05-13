@@ -167,6 +167,27 @@ app.map({
                 }
             },
         }
+    },
+    "/case": {
+        "/tags": {
+            get: (req, res, next) => {
+                let obj = {
+                    APPOS_VERSION: "v3.9.1"
+                };
+                const options = {
+                    hostname: "m.yidoutang.com",
+                    port: 443,
+                    path: "/apiv3/case/tags?" + qs.stringify(obj),
+                    method: "GET",
+                };
+                reqData(options, {
+                    success: { code: 200, message: "successful get case tags list!" },
+                    error: {
+                        code: 400
+                    }
+                })(req, res, next);
+            }
+        }
     }
 });
 
@@ -604,7 +625,8 @@ app.map({
             })
         }
     }
-})
+});
+
 
 
 
