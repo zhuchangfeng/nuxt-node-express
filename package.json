@@ -12,7 +12,7 @@
         "node": "cross-env NODE_ENV=development nodemon --exec  babel-node node/index.js  "
     },
     "dependencies": {
-        "axios": "^0.19.1",
+        "axios": "^0.21.1",
         "cross-env": "^5.2.0",
         "express": "^4.16.4",
         "jsonwebtoken": "^8.5.1",
